@@ -1,0 +1,32 @@
+<html>
+    <body>
+<!--    <button onclick="javascript:togglePin(0)">D0</button>-->
+    <button onclick="javascript:togglePin(1)">D1</button>
+    <button onclick="javascript:togglePin(2)">D2</button>
+    <button onclick="javascript:togglePin(3)">D3</button>
+    <button onclick="javascript:togglePin(4)">D4</button>
+<!--    <button onclick="javascript:togglePin(5)">D5</button>
+    <button onclick="javascript:togglePin(6)">D6</button>
+    <button onclick="javascript:togglePin(7)">D7</button>
+    <button onclick="javascript:togglePin(8)">D8</button>
+    <button onclick="javascript:togglePin(9)">LED</button>-->
+    <script>
+    	function togglePin(p) {
+    		if(p < 0 || p >= 10) 
+    			return;
+    		const Http = new XMLHttpRequest();
+    		const url = window.location.origin + "/control/"+(p-1);
+    		Http.open("GET",url);
+    		Http.send();
+    		
+    		Http.onreadystatechanged = (e) => {
+    			if(this.status == 200) {
+    				console.log("toggled "+p+" successfully.");
+    			} else {
+    				console.log("Probably an error toggling " + p +".");
+    			}
+    		}
+    	}
+    </script>
+    </body>
+</html>
