@@ -14,6 +14,7 @@ router.post('/', function (req, res, next) {
     var city = req.body.city;
     //TODO validation of everything
     //TODO check presence of already registered email
+    console.log(req.body);
     bcrypt.hash(password, 10, function (err, hash) {
         if (err) {
             console.log(err);
