@@ -21,6 +21,7 @@ router.post('/', function (req, res, next) {
         !city || city.length == 0) {
         console.log("a field is blank.")
         res.json({ err: "a field is blank." });
+        return;
     }
 
     //TODO check presence of already registered email
