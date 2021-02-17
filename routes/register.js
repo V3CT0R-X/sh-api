@@ -12,9 +12,18 @@ router.post('/', function (req, res, next) {
     var password = req.body.password;
     var email = req.body.email;
     var city = req.body.city;
-    //TODO validation of everything
-    //TODO check presence of already registered email
     console.log(req.body);
+    //TODO validation of everything
+    if (!first_name || first_name.length == 0 ||
+        !last_name || last_name.length == 0 ||
+        !password || password.length == 0 ||
+        !email || email.length == 0 ||
+        !city || city.length == 0) {
+        console.log("a field is blank.")
+        res.json({ err: "a field is blank." });
+    }
+
+    //TODO check presence of already registered email
     bcrypt.hash(password, 10, function (err, hash) {
         if (err) {
             console.log(err);
